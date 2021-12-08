@@ -16,13 +16,9 @@ def Grafana(url):
             if reqcode == 200:
                 print("漏洞验证成功:",url)
             else:
-                print("漏洞验证失败1"+i)
-        except requests.exceptions.ConnectTimeout:
-            print("漏洞验证失败2"+i)
-        except requests.exceptions.ConnectionError:
-            print("漏洞验证失败3"+i)
-        except requests.exceptions.ReadTimeout:
-            print("漏洞验证失败4"+i)
+                print("漏洞验证失败"+i)
+        except:
+             print("漏洞验证失败"+i)
 
 if __name__ == "__main__":
     with open("url.txt","r",encoding="utf-8") as f:
